@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import Projekts from "../components/projekts/projekts";
 import Profile from '../components/profile/profile';
 import ProjektSkeleton from '../util/ProjektSkeleton';
-import ProfileSkeleton from '../util/ProfileSkeleton'
 
 // Redux Stuff
 import { connect } from 'react-redux';

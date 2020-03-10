@@ -3,6 +3,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import Logo from "../images/kromacloud_logo.png";
 import { Link } from "react-router-dom";
+import backgroundImage from "../images/kromacloud_04.jpg";
 
 // MUI Imports
 import Grid from "@material-ui/core/Grid";
@@ -10,8 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
-
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -20,7 +21,12 @@ import { signupUser } from '../redux/actions/userActions';
 
 
   const styles = (theme) => ({
-    ...theme.spreadThis
+    ...theme.spreadThis,
+    background: {
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: "cover",
+      height: "100vh"
+    }
   });
 
 
@@ -69,18 +75,22 @@ class signup extends Component {
     const { errors } = this.state;
 
     return (
-      <Grid container className={classes.grid}>
-        <Grid item sm />
-        <Grid item sm>
-          <img
-            src={Logo}
-            alt="Kroma Projekts Logo white"
-            className={classes.image}
-          />
-          <Typography variant="h2" className={classes.pageTitle}>
-            Sign Up
-          </Typography>
-          <form
+      <div className={classes.background}>
+      <Grid container className={classes.flexcenter}>
+        <Grid item xs={12} sm={4} md={6} lg={8} className={classes.grid} />
+        <Grid item xs={12} sm={8} md={6} lg={4} className={classes.grid}>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography variant="h2" className={classes.pageTitle}>
+              Sign Up
+              </Typography>
+              <small>
+              Already Signed up? Go Log in {}
+                <Link to="/login" className={classes.link}>
+                  here
+                </Link>
+              </small>
+              <form
             noValidate
             onSubmit={this.handleSubmit}
             className={classes.form}
@@ -154,15 +164,16 @@ class signup extends Component {
                 />
               )}
             </Button>
-            <br />
-            <small>
-              Already Signed up? Go Log in <Link to="/login">here</Link>
-            </small>
           </form>
+            </CardContent>
+          </Card>
         </Grid>
-        <Grid item sm />
       </Grid>
-    );
+    </div>
+
+
+
+    )
   }
 }
 
