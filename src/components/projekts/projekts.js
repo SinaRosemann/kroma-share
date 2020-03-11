@@ -84,11 +84,11 @@ class projekts extends Component {
           </Typography>
           <Typography variant="body1">{body}</Typography>
           <LikeButton projektsId={projektsId} />
-          <span>{likeCount} likes</span>
+          <span>{likeCount}</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
-          <span>{commentCount} comments</span>
+          <span>{commentCount}</span>
           <ProjektDialog
             projektsId={projektsId}
             userHandle={userHandle}

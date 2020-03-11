@@ -31,6 +31,10 @@ const styles = (theme) => ({
       position: 'absolute',
       left: '91%',
       top: '6%'
+    },
+    profileImage: {
+      maxWidth: "100%",
+      maxHeight: "300px"
     }
   });
   

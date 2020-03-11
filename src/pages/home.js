@@ -14,10 +14,13 @@ import { getProjekts } from '../redux/actions/dataActions'
 
 const styles = theme => ({
   ...theme.spreadThis,
-  whatever: {
-    margin: "80px auto 0 auto",
+  container: {
+    margin: "0px auto",
+    paddingTop: "100px",
     maxWidth: "1200px",
-    height: "100vh"
+  },
+  background: {
+    backgroundColor: "#666666"
   }
 });
 
@@ -39,7 +42,8 @@ export class home extends Component {
       <ProjektSkeleton/>
     );
     return (
-      <Grid container className={classes.whatever} spacing={2}>
+      <div className={classes.background}>
+      <Grid container className={classes.container} spacing={2}>
         <Grid item sm={8} xs={12}>
           {recentProjektsMarkup}
         </Grid>
@@ -47,6 +51,7 @@ export class home extends Component {
           <Profile/>
         </Grid>
       </Grid>
+      </div>
     );
   }
 }
