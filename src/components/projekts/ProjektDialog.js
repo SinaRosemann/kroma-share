@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 // MUI Stuff
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import CardMedia from "@material-ui/core/CardMedia";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -17,27 +18,19 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import ChatIcon from '@material-ui/icons/Chat';
+
 // Redux stuff
 import { connect } from 'react-redux';
 import { getProjekt, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
   ...theme.spreadThis,
-  profileImage: {
-    maxWidth: 200,
-    height: 200,
-    borderRadius: '50%',
-    objectFit: 'cover'
-  },
   dialogContent: {
     padding: 20
   },
   closeButton: {
     position: 'absolute',
     left: '90%'
-  },
-  expandButton: {
-    position: 'absolute',
   },
   spinnerDiv: {
     textAlign: 'center',
@@ -100,32 +93,25 @@ class ProjektDialog extends Component {
       </div>
     ) : (
       <Grid container spacing={16}>
-        <Grid item sm={5}>
-          <img src={userImage} alt="Profile" className={classes.profileImage} />
+        <Grid item sm={2}>
+          <CardMedia
+            image={userImage}
+            title="Profile image"
+            className={classes.projektImage}
+          />
         </Grid>
-        <Grid item sm={7}>
-          <Typography
+        <Grid item sm={10}>
+        <Typography
+            variant="body2"
             component={Link}
-            color="primary"
-            variant="h5"
             to={`/users/${userHandle}`}
+            color="primary"
           >
-            @{userHandle}
+           <span className={classes.username}>{userHandle}</span>  · {dayjs(createdAt).fromNow()}
           </Typography>
-          <hr className={classes.invisibleSeparator} />
-          <Typography variant="body2" color="textSecondary">
-            {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
-          </Typography>
-          <hr className={classes.invisibleSeparator} />
-          <Typography variant="body1">{body}</Typography>
-          <LikeButton projektsId={projektsId} />
-          <span>{likeCount} likes</span>
-          <MyButton tip="comments">
-            <ChatIcon color="primary" />
-          </MyButton>
-          <span>{commentCount} comments</span>
+
+          <Typography variant="body1" className ={classes.projektbody}>{body}</Typography>
         </Grid>
-        <hr className={classes.visibleSeparator} />
       <CommentForm projektsId={projektsId} />
       <Comments comments={comments} />
       </Grid>
@@ -134,10 +120,10 @@ class ProjektDialog extends Component {
       <Fragment>
         <MyButton
           onClick={this.handleOpen}
-          tip="Expand Projekt"
+          tip="Comment on projekt"
           tipClassName={classes.expandButton}
         >
-          <UnfoldMore color="primary" />
+          <ChatIcon color="primary" />
         </MyButton>
         <Dialog
           open={this.state.open}

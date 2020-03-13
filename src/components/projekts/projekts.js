@@ -27,26 +27,13 @@ import {
   getProjekt
 } from "../../redux/actions/dataActions";
 
-const styles = {
+const styles = (theme) => ({
+  ...theme.spreadThis,
   card: {
     display: "flex",
     marginBottom: 20
-  },
-  image: {
-    width: "50px",
-    height: "50px",
-    borderRadius: "50%",
-  },
-  name: {
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    letterSpacing: "1px",
-    color: "#ff2420"
-  },
-  body: {
-    padding: "20px 0px"
   }
-};
+});
 
 class projekts extends Component {
   render() {
@@ -78,7 +65,7 @@ class projekts extends Component {
           <CardMedia
             image={userImage}
             title="Profile image"
-            className={classes.image}
+            className={classes.projektImage}
           />
           {deleteButton}
         </CardContent>
@@ -89,21 +76,19 @@ class projekts extends Component {
             to={`/users/${userHandle}`}
             color="primary"
           >
-           <span className={classes.name}>{userHandle}</span>  · {dayjs(createdAt).fromNow()}
+           <span className={classes.username}>{userHandle}</span>  · {dayjs(createdAt).fromNow()}
           </Typography>
           
-          <Typography variant="body1" className ={classes.body}>{body}</Typography>
+          <Typography variant="body1" className ={classes.projektbody}>{body}</Typography>
           <LikeButton projektsId={projektsId} />
           <span>{likeCount}</span>
-          <MyButton tip="comments">
-            <ChatIcon color="primary" />
-          </MyButton>
-          <span>{commentCount}</span>
-          <ProjektDialog
+          <ProjektDialog 
             projektsId={projektsId}
             userHandle={userHandle}
             openDialog={this.props.openDialog}
-          />
+          />          
+          <span>{commentCount}</span>
+
 
         </CardContent>
       </Card>

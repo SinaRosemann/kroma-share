@@ -6,15 +6,15 @@ import dayjs from "dayjs";
 // MUI Imports
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-
+import CardMedia from "@material-ui/core/CardMedia";
 
 const styles = theme => ({
   ...theme.spreadThis,
   commentImage: {
-      maxWidth: "100%",
-      height: 100,
-      objectFit: "cover",
-      borderRadius: "50%"
+    maxWidth: "100%",
+    height: 100,
+    objectFit: "cover",
+    borderRadius: "50%"
   }
 });
 
@@ -31,32 +31,30 @@ class Comments extends Component {
               <Grid item sm={12}>
                 <Grid container>
                   <Grid item sm={2}>
-                    <img
-                      src={userImage}
-                      alt="comment"
-                      className={classes.commentImage}
+                    <CardMedia
+                      image={userImage}
+                      title="Profile image"
+                      className={classes.projektImage}
                     />
                   </Grid>
                   <Grid item sm={9}>
                     <div className={classes.commentData}>
                       <Typography
-                        variant="h5"
+                        variant="body2"
                         component={Link}
-                        to={`users/${userHandle}`}
+                        to={`/users/${userHandle}`}
                         color="primary"
                       >
-                        {userHandle}
+                        <span className={classes.username}>{userHandle}</span> ·{" "}
+                        {dayjs(createdAt).fromNow()}
                       </Typography>
-                      <Typography variant="body2">
-                        {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
-                      </Typography>
-                      <hr className={classes.invisibleSeperator}/>
-                      <Typography variant="body1">{body}</Typography>
+                      <Typography variant="body1" className ={classes.projektbody}>{body}</Typography>
+
                     </div>
                   </Grid>
                 </Grid>
               </Grid>
-              <hr className={classes.visibleSeperator}/>
+              <hr className={classes.visibleSeperator} />
             </Fragment>
           );
         })}

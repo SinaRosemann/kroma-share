@@ -5,12 +5,18 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+
 // Redux stuff
 import { connect } from 'react-redux';
 import { submitComment } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
-  ...theme.spreadThis
+  ...theme.spreadThis,
+  commentForm: {
+    textAlign: "center",
+    padding: "50px"
+  }
 });
 
 class CommentForm extends Component {
@@ -41,12 +47,18 @@ class CommentForm extends Component {
     const errors = this.state.errors;
 
     const commentFormMarkup = authenticated ? (
-      <Grid item sm={12} style={{ textAlign: 'center' }}>
-        <form onSubmit={this.handleSubmit}>
+      <Grid item sm={12} >
+        <form onSubmit={this.handleSubmit} className={classes.commentForm}>
+        <Typography
+            variant="h5"
+            color="primary"
+          > Leave a comment or note
+          </Typography>
+
           <TextField
             name="body"
             type="text"
-            label="Comment on a Projekt"
+            label="Your thoughts"
             error={errors.comment ? true : false}
             helperText={errors.comment}
             value={this.state.body}
@@ -63,7 +75,6 @@ class CommentForm extends Component {
             Submit
           </Button>
         </form>
-        <hr className={classes.visibleSeparator} />
       </Grid>
     ) : null;
     return commentFormMarkup;

@@ -43,6 +43,20 @@ export default {
     form: {
       textAlign: "left"
     },
+  projektImage: {
+    width: "50px",
+    height: "50px",
+    borderRadius: "50%",
+  },
+    username: {
+      fontWeight: "bold",
+      textTransform: "uppercase",
+      letterSpacing: "1px",
+      color: "#ff2420"
+    },
+    projektbody: {
+      padding: "20px 0px"
+    },
     textField: {
       margin: "10px 0px"
     },

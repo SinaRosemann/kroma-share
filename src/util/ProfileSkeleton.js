@@ -11,6 +11,13 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const styles = (theme) => ({
   ...theme.spreadThis,
+  imagewrapper: {
+    backgroundColor: "#666666",
+    width: "200px",
+    height: "200px",
+    borderRadius: "50%",
+    margin: "0px auto"
+  },
   handle: {
     height: 20,
     backgroundColor: theme.palette.primary.main,
@@ -36,8 +43,7 @@ const ProfileSkeleton = (props) => {
   return (
     <Paper className={classes.paper}>
       <div className={classes.profile}>
-        <div className="image-wrapper">
-          <img src={NoImg} alt="profile" className="profile-image" />
+        <div className={classes.imagewrapper}>
         </div>
         <hr />
         <div className="profile-details">

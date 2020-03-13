@@ -54,7 +54,6 @@ const ProjektSkeleton = (props) => {
 
   const content = Array.from({ length: 4 }).map((item, index) => (
     <Card className={classes.card} key={index}>
-      <CardMedia className={classes.cover} image={NoImg} />
       <CardContent className={classes.cardContent}>
         <div className={classes.handle} />
         <div className={classes.date} />
