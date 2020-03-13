@@ -28,6 +28,7 @@ import { logoutUser, uploadImage } from "../../redux/actions/userActions";
 
 const styles = theme => ({
   ...theme.spreadThis
+ 
 });
 
 class Profile extends Component {
@@ -81,30 +82,31 @@ class Profile extends Component {
                 to={`/users/${handle}`}
                 color="primary"
                 variant="h5"
+                className={classes.username}
               >
-                @{handle}
+                {handle}
               </MuiLink>
               <hr />
               {bio && <Typography variant="body2">{bio}</Typography>}
               <hr />
               {location && (
                 <Fragment>
-                  <LocationOn color="primary" /> <span>{location}</span>
+                  <LocationOn fontSize="small" color="primary" /> <span className={classes.bioText}>{location}</span>
                   <hr />
                 </Fragment>
               )}
               {website && (
                 <Fragment>
-                  <LinkIcon color="primary" />
-                  <a href={website} target="_blank" rel="noopener noreferrer">
+                  <LinkIcon fontSize="small" color="primary" />
+                  <a href={website} target="_blank" rel="noopener noreferrer" className={classes.bioText}>
                     {" "}
                     {website}
                   </a>
                   <hr />
                 </Fragment>
               )}
-              <CalendarToday color="primary" />{" "}
-              <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
+              <CalendarToday fontSize="small" color="primary" />{" "}
+              <span className={classes.bioText}>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
             </div>
             <MyButton tip="Logout" onClick={this.handleLogout}>
               <KeyboardReturn color="primary" />

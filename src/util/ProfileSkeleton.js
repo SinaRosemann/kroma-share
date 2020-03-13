@@ -52,11 +52,11 @@ const ProfileSkeleton = (props) => {
           <div className={classes.fullLine} />
           <div className={classes.fullLine} />
           <hr />
-          <LocationOn color="primary" /> <span>Location</span>
+          <LocationOn color="primary" fontSize="small"/> <span className={classes.bioText}>Location</span>
           <hr />
-          <LinkIcon color="primary" /> https://website.com
+          <LinkIcon color="primary" fontSize="small"/><span className={classes.bioText}> https://website.com</span>
           <hr />
-          <CalendarToday color="primary" /> Joined date
+          <CalendarToday color="primary" fontSize="small"/> <span className={classes.bioText}> Joined date</span>
         </div>
       </div>
     </Paper>

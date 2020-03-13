@@ -13,22 +13,7 @@ import { connect } from "react-redux";
 import { getProjekts } from "../redux/actions/dataActions";
 
 const styles = theme => ({
-  ...theme.spreadThis,
-  container: {
-    margin: "0px auto",
-    width: "100%",
-    maxWidth: "1200px"
-  },
-  background: {
-    backgroundColor: "#666666"
-  },
-  pageTitle: {
-    fontSize: "5vw",
-    fontWeight: "900",
-    textTransform: "uppercase",
-    textAlign: "center",
-    padding: "140px 0px 40px 0px"
-  }
+  ...theme.spreadThis
 });
 
 export class home extends Component {
@@ -48,15 +33,15 @@ export class home extends Component {
       <ProjektSkeleton />
     );
     return (
-      <div className={classes.background}>
+      <div className={classes.homeBackground}>
         <Typography
           variant="h1"
           color="secondary"
-          className={classes.pageTitle}
+          className={classes.title}
         >
-          What are your latest Projekts?
+          Latest Projekts...
         </Typography>
-        <Grid container className={classes.container} spacing={8}>
+        <Grid container className={classes.homeContainer} spacing={8}>
         <Grid item sm={4} xs={12}>
             <Profile />
           </Grid>

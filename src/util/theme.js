@@ -24,6 +24,22 @@ export default {
     }
   },
   spreadThis: {
+    homeContainer: {
+      margin: "0px auto",
+      width: "100%",
+      maxWidth: "1200px"
+    },
+    homeBackground: {
+      backgroundColor: "#666666",
+      minHeight: "100vh"
+    },
+  title: {
+    fontSize: "5vw",
+    fontWeight: "900",
+    textTransform: "uppercase",
+    textAlign: "center",
+    padding: "140px 0px 40px 0px"
+  },
     card: {
       margin: "0px 25px",
       padding: "25px",
@@ -87,6 +103,9 @@ export default {
     paper: {
       padding: 20
     },
+    bioText: {
+      fontSize: "14px"
+    },
     profile: {
       "& .image-wrapper": {
         textAlign: "center",
@@ -110,7 +129,7 @@ export default {
           verticalAlign: "middle"
         },
         "& a": {
-          color: "#00bcd4"
+          color: "#ff2420"
         }
       },
       "& hr": {

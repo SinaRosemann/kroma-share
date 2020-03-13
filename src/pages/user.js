@@ -6,16 +6,22 @@ import StaticProfile from "../components/profile/StaticProfile";
 import Grid from "@material-ui/core/Grid";
 import ProjektSkeleton from '../util/ProjektSkeleton'
 import ProfileSkeleton from '../util/ProfileSkeleton';
+import withStyles from "@material-ui/core/styles/withStyles";
+import Typography from "@material-ui/core/Typography";
 
 import { connect } from "react-redux";
 import { getUserData } from "../redux/actions/dataActions";
+
+
+const styles = theme => ({
+  ...theme.spreadThis
+});
 
 class user extends Component {
   state = {
     profile: null,
     projektsIdParam: null
   };
-  
 
   componentDidMount() {
     const handle = this.props.match.params.handle;
@@ -35,6 +41,9 @@ class user extends Component {
   render() {
     const { projekts, loading } = this.props.data;
     const { projektsIdParam } = this.state;
+    const { classes }  = this.props;
+    const userhandle = this.props.match.params.handle;
+
 
     const projektsMarkup = loading ? (
       <ProjektSkeleton/>
@@ -53,18 +62,29 @@ class user extends Component {
       )
     ;
     return (
-      <Grid container spacing={2}>
-        <Grid item sm={8} xs={12}>
-          {projektsMarkup}
-        </Grid>
-        <Grid item sm={4} xs={12}>
+      <div className={classes.homeBackground}>
+        <Typography
+          variant="h1"
+          color="secondary"
+          className={classes.title}
+        >{userhandle} Projekts 
+        </Typography>
+
+      <Grid container className={classes.homeContainer} spacing={8}>
+      <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (
             <ProfileSkeleton/>
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}
         </Grid>
+        <Grid item sm={8} xs={12}>
+          {projektsMarkup}
+        </Grid>
+        
       </Grid>
+      </div>
+
     );
   }
 }
@@ -78,4 +98,6 @@ const mapStateToProps = state => ({
   data: state.data
 });
 
-export default connect(mapStateToProps, { getUserData })(user);
+export default connect(mapStateToProps, { getUserData })(
+  withStyles(styles)(user)
+);

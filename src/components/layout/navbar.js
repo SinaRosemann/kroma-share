@@ -35,7 +35,10 @@ export class navbar extends Component {
     return (
       <AppBar>
         <Toolbar className={classes.navContainer}>
-          <img src={Logo} alt="logo kroma cloud" className={classes.logo} />
+          <Link to="/">
+            {" "}
+            <img src={Logo} alt="logo kroma cloud" className={classes.logo} />
+          </Link>
           {authenticated ? (
             <div className={classes.icons}>
               <Fragment>

@@ -15,6 +15,11 @@ const styles = theme => ({
     height: 100,
     objectFit: "cover",
     borderRadius: "50%"
+  },
+  visibleSeperator: {
+    width: "100%",
+    margin: "0px auto 20px auto",
+    colort: "#f0f0f0"
   }
 });
 
@@ -54,8 +59,8 @@ class Comments extends Component {
                   </Grid>
                 </Grid>
               </Grid>
-              <hr className={classes.visibleSeperator} />
-            </Fragment>
+{/*               <hr className={classes.visibleSeperator} />
+ */}            </Fragment>
           );
         })}
       </Grid>
