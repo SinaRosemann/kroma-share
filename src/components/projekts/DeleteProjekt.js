@@ -8,12 +8,14 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
-import DeleteOutline from "@material-ui/icons/DeleteOutline";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import { connect } from "react-redux";
 import { deleteProjekt } from "../../redux/actions/dataActions";
 
-const styles = {};
+const styles = theme => ({
+  ...theme.spreadThis
+});
 
 class DeleteProjekt extends Component {
   state = {
@@ -39,7 +41,7 @@ class DeleteProjekt extends Component {
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
-          <DeleteOutline color="primary" />
+          <DeleteIcon fontSize="small"  color="primary" />
         </MyButton>
         <Dialog
           open={this.state.open}

@@ -4,14 +4,10 @@ html, body {
 }
 
 .container {
-  width: 100vw;
   height: 100vh;
 }
 
-/* Navbar */
-.nav-container {
-  margin: auto;
-}
+
 
 
 /* Typography */

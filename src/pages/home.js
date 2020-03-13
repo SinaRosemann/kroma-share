@@ -16,6 +16,7 @@ const styles = theme => ({
   ...theme.spreadThis,
   container: {
     margin: "0px auto",
+    width: "100%",
     maxWidth: "1200px"
   },
   background: {
@@ -55,13 +56,14 @@ export class home extends Component {
         >
           What are your latest Projekts?
         </Typography>
-        <Grid container className={classes.container} spacing={2}>
+        <Grid container className={classes.container} spacing={8}>
+        <Grid item sm={4} xs={12}>
+            <Profile />
+          </Grid>
           <Grid item sm={8} xs={12}>
             {recentProjektsMarkup}
           </Grid>
-          <Grid item sm={4} xs={12}>
-            <Profile />
-          </Grid>
+
         </Grid>
       </div>
     );
