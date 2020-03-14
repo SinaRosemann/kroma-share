@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -7,12 +7,6 @@ import Projekts from "../components/projekts/projekts";
 import Profile from "../components/profile/profile";
 import ProjektSkeleton from "../util/ProjektSkeleton";
 import Typography from "@material-ui/core/Typography";
-
-
-// MUI
-import Button from "@material-ui/core/Button";
-import AddIcon from '@material-ui/icons/Add';
-
 
 // Redux Stuff
 import { connect } from "react-redux";
@@ -35,7 +29,7 @@ export class home extends Component {
 
   render() {
     const { projekts, loading } = this.props.data;
-    const { classes } = this.props;
+    const { classes , authenticated} = this.props;
 
     let recentProjektsMarkup = !loading ? (
       projekts.map(projekts => (
@@ -44,7 +38,8 @@ export class home extends Component {
     ) : (
       <ProjektSkeleton />
     );
-    return (
+
+      let homeMarkup = authenticated ? ( 
       <div className={classes.homeBackground}>
         <Typography
           variant="h1"
@@ -54,7 +49,7 @@ export class home extends Component {
           Latest Projekts...
         </Typography>
         
-        <div className={classes.postProjekt} class="postProjektIcon">
+        <div className="postProjektIcon">
           <PostProjekt />
         </div>
 
@@ -67,17 +62,42 @@ export class home extends Component {
           </Grid>
 
         </Grid>
-      </div>
-    );
+      </div>) : (
+         <div className={classes.homeBackground}>
+         <Typography
+           variant="h1"
+           color="secondary"
+           className={classes.title}
+         >
+           Latest Projekts...
+         </Typography> 
+         <Grid container className={classes.homeContainer} spacing={8}>
+         <Grid item sm={4} xs={12}>
+             <Profile />
+           </Grid>
+           <Grid item sm={8} xs={12}>
+             {recentProjektsMarkup}
+           </Grid>
+ 
+         </Grid>
+       </div>
+      )
+   
+
+    return homeMarkup;
   }
 }
 
 home.propTypes = {
   getProjekts: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  authenticated: PropTypes.bool.isRequired
+
 };
 const mapStateToProps = state => ({
-  data: state.data
+  data: state.data,
+  authenticated: state.user.authenticated
+
 });
 export default connect(mapStateToProps, { getProjekts })(
   withStyles(styles)(home)

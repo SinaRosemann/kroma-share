@@ -20,4 +20,5 @@ html, body {
 /* Typography */
 a {
   text-decoration: none;
+  color: #000;
 }

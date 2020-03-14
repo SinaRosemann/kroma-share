@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../util/MyButton';
-import LikeButton from './LikeButton';
 import Comments from './Comments';
 import CommentForm from './CommentForm';
 import dayjs from 'dayjs';
@@ -16,12 +15,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 // Icons
 import CloseIcon from '@material-ui/icons/Close';
-import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import ChatIcon from '@material-ui/icons/Chat';
 
 // Redux stuff
 import { connect } from 'react-redux';
-import { getProjekt, clearErrors } from '../../redux/actions/dataActions';
+import { getProjekt, clearErrors, getProjekts} from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -53,22 +51,33 @@ class ProjektDialog extends Component {
 
 
   handleOpen = () => {
+    
     let oldPath = window.location.pathname;
 
     const { userHandle, projektsId } = this.props;
     const newPath = `/users/${userHandle}/projekts/${projektsId}`;
 
-    if (oldPath === newPath) oldPath = `/users/${userHandle}`;
+    if (oldPath === newPath) {
+      oldPath = `/users/${userHandle}`;
+    }
 
     window.history.pushState(null, null, newPath);
  
     this.setState({ open: true, oldPath, newPath });
     this.props.getProjekt(this.props.projektsId);
+
   };
   handleClose = () => {
+
     window.history.pushState(null, null, this.state.oldPath);
-    this.setState({ open: false });   
+    this.setState({ open: false });
+
+    this.props.getProjekts();
+
     this.props.clearErrors();
+    console.log(this.state.oldPath);
+    console.log(this.state.newPath);
+
   };
 
   render() {
@@ -78,8 +87,6 @@ class ProjektDialog extends Component {
         projektsId,
         body,
         createdAt,
-        likeCount,
-        commentCount,
         userImage,
         userHandle,
         comments
@@ -92,7 +99,7 @@ class ProjektDialog extends Component {
         <CircularProgress size={200} thickness={2} />
       </div>
     ) : (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item sm={2}>
           <CardMedia
             image={userImage}
@@ -153,7 +160,9 @@ ProjektDialog.propTypes = {
   projektsId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
   projekt: PropTypes.object.isRequired,
-  UI: PropTypes.object.isRequired
+  UI: PropTypes.object.isRequired,
+  getProjekts: PropTypes.func.isRequired,
+
 };
 
 const mapStateToProps = (state) => ({
@@ -163,7 +172,8 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
     getProjekt,
-  clearErrors
+  clearErrors,
+  getProjekts
 };
 
 export default connect(

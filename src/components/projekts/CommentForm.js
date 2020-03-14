@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { Link } from "react-router-dom";
+
 // MUI Stuff
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -16,7 +18,15 @@ const styles = (theme) => ({
   commentForm: {
     textAlign: "center",
     padding: "50px"
-  }
+  },
+  visibleSeperator: {
+    width: "100%",
+    margin: "0px auto 30px auto",
+    colort: "#f0f0f0"
+  },
+  loginText: {
+    fontSize: "12px"
+    }
 });
 
 class CommentForm extends Component {
@@ -25,7 +35,7 @@ class CommentForm extends Component {
     errors: {}
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
     }
@@ -75,8 +85,27 @@ class CommentForm extends Component {
             Submit
           </Button>
         </form>
+        <Typography
+            variant="h6"
+            color="primary"
+          > Latest Comments
+          </Typography>
+        <hr className={classes.visibleSeperator} />
       </Grid>
-    ) : null;
+    ) : (
+      <Grid item sm={12} >
+        <Typography
+            variant="h6"
+            color="primary"
+          > Latest Comments
+          </Typography>
+          <span className={classes.loginText}><Link to="/login" className={classes.link} >
+                    Login 
+    </Link> {} to Comment </span>
+          
+        <hr className={classes.visibleSeperator} />
+      </Grid>
+    );
     return commentFormMarkup;
   }
 }

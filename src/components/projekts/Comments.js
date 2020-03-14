@@ -15,11 +15,6 @@ const styles = theme => ({
     height: 100,
     objectFit: "cover",
     borderRadius: "50%"
-  },
-  visibleSeperator: {
-    width: "100%",
-    margin: "0px auto 20px auto",
-    colort: "#f0f0f0"
   }
 });
 
@@ -35,14 +30,14 @@ class Comments extends Component {
             <Fragment key={createdAt}>
               <Grid item sm={12}>
                 <Grid container>
-                  <Grid item sm={2}>
+                  <Grid item xs={4} sm={2}>
                     <CardMedia
                       image={userImage}
                       title="Profile image"
                       className={classes.projektImage}
                     />
                   </Grid>
-                  <Grid item sm={9}>
+                  <Grid item xs={8} sm={10}>
                     <div className={classes.commentData}>
                       <Typography
                         variant="body2"
@@ -59,8 +54,7 @@ class Comments extends Component {
                   </Grid>
                 </Grid>
               </Grid>
-{/*               <hr className={classes.visibleSeperator} />
- */}            </Fragment>
+           </Fragment>
           );
         })}
       </Grid>

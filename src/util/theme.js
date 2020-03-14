@@ -15,13 +15,20 @@ export default {
       main: "#ffffff",
       dark: "#ffffff",
       contrastText: "#000"
-    }
+    },
+    error: {
+      light: "#ff2420",
+      main: "#ff2420",
+      dark: "#ff2420",
+      contrastText: "#ff2420"
+    } 
   },
   typography: {
     color: "#fff",
     h2: {
       fontSize: "32px"
     }
+    
   },
   spreadThis: {
     homeContainer: {

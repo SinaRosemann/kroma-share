@@ -18,7 +18,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatIcon from '@material-ui/icons/Chat';
 
-// Redux
+// Redux 
 import { connect } from 'react-redux';
 import { markNotificationsRead } from '../../redux/actions/userActions';
 
@@ -71,7 +71,7 @@ class Notifications extends Component{
         notifications.map(not => {
           const verb = not.type === "like" ? "liked" : "commented on";
           const time = dayjs(not.createdAt).fromNow();
-          const iconColor = not.read ? "primary" : "secondary";
+          const iconColor = not.read ? "primary" : "error";
           const icon =
             not.type === "like" ? (
               <FavoriteIcon color={iconColor} />
@@ -84,7 +84,7 @@ class Notifications extends Component{
               {icon}
               <Typography
                 component={Link}
-                color="default"
+                color="primary"
                 to={`/users/${not.recipient}/projekts/${not.projektsId}`}
               >
                 {not.sender} {verb} your projekt {time}

@@ -12,7 +12,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
-import CardMedia from "@material-ui/core/CardMedia";
 
 import { connect } from "react-redux";
 import { postProjekt, clearErrors } from "../../redux/actions/dataActions";
@@ -45,7 +44,7 @@ const styles = (theme) => ({
       body: '',
       errors: {}
     };
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
       if (nextProps.UI.errors) {
         this.setState({
           errors: nextProps.UI.errors

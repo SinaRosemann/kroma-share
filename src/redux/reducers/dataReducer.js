@@ -62,6 +62,7 @@ export default function(state = initialState, action) {
         ...state,
         projekt: {
           ...state.projekt,
+          commentCount: state.projekt.commentCount + 1,
           comments: [action.payload, ...state.projekt.comments]
         }
       };

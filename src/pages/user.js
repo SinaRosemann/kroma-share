@@ -42,7 +42,7 @@ class user extends Component {
   render() {
     const { projekts, loading } = this.props.data;
     const { projektsIdParam } = this.state;
-    const { classes }  = this.props;
+    const { classes , authenticated} = this.props;
     const userhandle = this.props.match.params.handle;
 
 
@@ -62,7 +62,8 @@ class user extends Component {
         })
       )
     ;
-    return (
+
+    let userMarkup = authenticated ? (
       <div className={classes.homeBackground}>
         <Typography
           variant="h1"
@@ -70,7 +71,7 @@ class user extends Component {
           className={classes.title}
         >{userhandle} Projekts 
         </Typography>
-        <div class="postProjektIcon">
+        <div className="postProjektIcon">
           <PostProjekt />
         </div>
 
@@ -88,18 +89,45 @@ class user extends Component {
         
       </Grid>
       </div>
+    ) : (
+      <div className={classes.homeBackground}>
+        <Typography
+          variant="h1"
+          color="secondary"
+          className={classes.title}
+        >{userhandle} Projekts 
+        </Typography>
+      <Grid container className={classes.homeContainer} spacing={8}>
+      <Grid item sm={4} xs={12}>
+          {this.state.profile === null ? (
+            <ProfileSkeleton/>
+          ) : (
+            <StaticProfile profile={this.state.profile} />
+          )}
+        </Grid>
+        <Grid item sm={8} xs={12}>
+          {projektsMarkup}
+        </Grid>
+        
+      </Grid>
+      </div>
+    )
 
-    );
+
+    return userMarkup
   }
 }
 
 user.propTypes = {
   getUserData: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  authenticated: PropTypes.bool.isRequired
+
 };
 
 const mapStateToProps = state => ({
-  data: state.data
+  data: state.data,
+  authenticated: state.user.authenticated
 });
 
 export default connect(mapStateToProps, { getUserData })(

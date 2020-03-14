@@ -14,7 +14,7 @@ import {
 } from "../types";
 import axios from "axios";
 
-// Get all projekts
+// Get all projekts 
 export const getProjekts = () => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
@@ -32,6 +32,8 @@ export const getProjekts = () => dispatch => {
       });
     });
 };
+
+
 export const getProjekt = projektsId => dispatch => {
   dispatch({ type: LOADING_UI });
   axios

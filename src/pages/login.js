@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import Logo from "../images/kromacloud_logo.png";
 import backgroundImage from "../images/kromacloud_04.jpg";
 
 import { Link } from "react-router-dom";
