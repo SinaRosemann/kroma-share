@@ -78,7 +78,7 @@ const styles = (theme) => ({
       return (
         <Fragment>
           <MyButton onClick={this.handleOpen} tip="Post a Projekt!">
-            <AddIcon color="secondary"/>
+            <AddIcon color="secondary" className={classes.addIcon}/>
           </MyButton>
           <Dialog
             open={this.state.open}

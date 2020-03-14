@@ -36,9 +36,10 @@ export default {
   title: {
     fontSize: "5vw",
     fontWeight: "900",
+    letterSpacing: "2px",
     textTransform: "uppercase",
     textAlign: "center",
-    padding: "140px 0px 40px 0px"
+    padding: "140px 0px 0px 0px"
   },
     card: {
       margin: "0px 25px",

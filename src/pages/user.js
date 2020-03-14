@@ -8,6 +8,7 @@ import ProjektSkeleton from '../util/ProjektSkeleton'
 import ProfileSkeleton from '../util/ProfileSkeleton';
 import withStyles from "@material-ui/core/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
+import PostProjekt from "../components/projekts/PostProjekt";
 
 import { connect } from "react-redux";
 import { getUserData } from "../redux/actions/dataActions";
@@ -69,6 +70,9 @@ class user extends Component {
           className={classes.title}
         >{userhandle} Projekts 
         </Typography>
+        <div class="postProjektIcon">
+          <PostProjekt />
+        </div>
 
       <Grid container className={classes.homeContainer} spacing={8}>
       <Grid item sm={4} xs={12}>

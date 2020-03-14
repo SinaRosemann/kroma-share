@@ -7,8 +7,15 @@ html, body {
   height: 100vh;
 }
 
-
-
+/* Add projekt button */
+.postProjektIcon {
+  text-align: center;
+}
+.postProjektIcon .MuiSvgIcon-root{
+  height: 150px;
+  width: 150px;
+  text-align: center;
+}
 
 /* Typography */
 a {
