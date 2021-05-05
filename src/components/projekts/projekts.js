@@ -28,7 +28,7 @@ const styles = (theme) => ({
   card: {
     display: "flex",
     marginBottom: 20
-  }
+  },
 });
 
 class projekts extends Component {

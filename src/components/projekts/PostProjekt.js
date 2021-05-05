@@ -30,7 +30,11 @@ const styles = (theme) => ({
     closeButton: {
       position: 'absolute',
       left: '91%',
-      top: '6%'
+      top: '6%',
+      [theme.breakpoints.down("xs")]: {
+        left: "85%",
+        top: "3%",
+      },
     },
     profileImage: {
       maxWidth: "100%",

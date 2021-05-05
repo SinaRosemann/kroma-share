@@ -15,7 +15,7 @@ import {
 import axios from "axios";
 
 // Get all projekts 
-export const getProjekts = () => dispatch => {
+export const getProjekts = () => dispatch => { 
   dispatch({ type: LOADING_DATA });
   axios
     .get("/projekts")

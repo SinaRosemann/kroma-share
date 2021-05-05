@@ -28,7 +28,10 @@ const styles = (theme) => ({
   },
   closeButton: {
     position: 'absolute',
-    left: '90%'
+    left: '90%',
+    [theme.breakpoints.down("xs")]: {
+      left: '85%',
+    },
   },
   spinnerDiv: {
     textAlign: 'center',
@@ -43,6 +46,8 @@ class ProjektDialog extends Component {
     oldPath: '',
     newPath: ''
   };
+
+  
   componentDidMount() {
     if (this.props.openDialog) {
       this.handleOpen();
@@ -71,12 +76,8 @@ class ProjektDialog extends Component {
 
     window.history.pushState(null, null, this.state.oldPath);
     this.setState({ open: false });
-
-    this.props.getProjekts();
-
     this.props.clearErrors();
-    console.log(this.state.oldPath);
-    console.log(this.state.newPath);
+
 
   };
 

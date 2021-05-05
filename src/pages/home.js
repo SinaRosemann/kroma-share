@@ -54,10 +54,10 @@ export class home extends Component {
         </div>
 
         <Grid container className={classes.homeContainer} spacing={8}>
-        <Grid item sm={4} xs={12}>
+        <Grid item md={4} sm={12} xs={12}>
             <Profile />
           </Grid>
-          <Grid item sm={8} xs={12}>
+          <Grid item md={8} sm={12} xs={12}>
             {recentProjektsMarkup}
           </Grid>
 
@@ -72,10 +72,10 @@ export class home extends Component {
            Latest Projekts...
          </Typography> 
          <Grid container className={classes.homeContainer} spacing={8}>
-         <Grid item sm={4} xs={12}>
+         <Grid item md={4} sm={12} xs={12}>
              <Profile />
            </Grid>
-           <Grid item sm={8} xs={12}>
+           <Grid item md={8} sm={12} xs={12}>
              {recentProjektsMarkup}
            </Grid>
  

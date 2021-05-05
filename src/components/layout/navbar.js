@@ -22,10 +22,20 @@ const styles = theme => ({
   icons: {
     position: "fixed",
     display: "inline-flex",
-    right: "20px"
+    right: "20px",
+    [theme.breakpoints.down("xs")]: {
+      "& button": {
+        padding: 8,
+      }
+    },
+
+
   },
   logo: {
-    maxHeight: "80px"
+    maxHeight: "80px",
+    [theme.breakpoints.down("xs")]: {
+      maxHeight: "50px",
+    },
   }
 });
 

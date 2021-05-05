@@ -150,14 +150,14 @@ class signup extends Component {
             <Button
               type="submit"
               variant="outlined"
-              color="secondary"
+              color="primary"
               size="large"
               className={classes.button}
             >
               Sign Up
               {loading && (
                 <CircularProgress
-                  color="secondary"
+                  color="primary"
                   size={30}
                   className={classes.progress}
                 />

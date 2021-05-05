@@ -27,6 +27,9 @@ import axios from "axios";
 // Theme
 const themeKroma = createMuiTheme(themeObject);
 
+axios.defaults.baseURL = 'https://europe-west1-kroma-share.cloudfunctions.net/api';
+
+
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);

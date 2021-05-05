@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Projekts from "../components/projekts/projekts";
 import StaticProfile from "../components/profile/StaticProfile";
+import Profile from "../components/profile/profile";
 import Grid from "@material-ui/core/Grid";
 import ProjektSkeleton from '../util/ProjektSkeleton'
 import ProfileSkeleton from '../util/ProfileSkeleton';
@@ -39,6 +40,15 @@ class user extends Component {
       })
       .catch(err => console.log(err));
   } 
+
+  componentDidUpdate(prevState) {
+    if (prevState.profile !== this.state.profile) {
+      
+    }
+  }
+
+
+   
   render() {
     const { projekts, loading } = this.props.data;
     const { projektsIdParam } = this.state;
@@ -69,21 +79,23 @@ class user extends Component {
           variant="h1"
           color="secondary"
           className={classes.title}
-        >{userhandle} Projekts 
+        >{userhandle}'s Projekts 
         </Typography>
-        <div className="postProjektIcon">
+{/*         <div className="postProjektIcon">
           <PostProjekt />
-        </div>
+        </div> */}
 
       <Grid container className={classes.homeContainer} spacing={8}>
-      <Grid item sm={4} xs={12}>
+      <Grid item md={4} sm={12} xs={12} >
           {this.state.profile === null ? (
             <ProfileSkeleton/>
           ) : (
-            <StaticProfile profile={this.state.profile} />
+          
+            <StaticProfile profile={this.state.profile} /> 
+
           )}
         </Grid>
-        <Grid item sm={8} xs={12}>
+        <Grid item md={8} sm={12} xs={12}>
           {projektsMarkup}
         </Grid>
         
@@ -98,14 +110,14 @@ class user extends Component {
         >{userhandle} Projekts 
         </Typography>
       <Grid container className={classes.homeContainer} spacing={8}>
-      <Grid item sm={4} xs={12}>
+      <Grid item md={4} sm={12}>
           {this.state.profile === null ? (
             <ProfileSkeleton/>
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}
         </Grid>
-        <Grid item sm={8} xs={12}>
+        <Grid item md={8} sm={12}>
           {projektsMarkup}
         </Grid>
         

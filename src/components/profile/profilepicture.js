@@ -37,7 +37,10 @@ const styles = theme => ({
     textTransform: "uppercase",
     "&:hover": {
       textDecoration: "none"
-    }
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+      },
   }
 });
 
@@ -61,7 +64,7 @@ export class Profilepicture extends Component {
 
           <img src={imageUrl} alt="profile" className={classes.profileImage} />
 
-          <MuiLink
+          <MuiLink 
             component={Link}
             to={`/users/${handle}`}
             variant="body1"

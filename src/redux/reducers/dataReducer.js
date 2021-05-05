@@ -37,7 +37,7 @@ export default function(state = initialState, action) {
     case UNLIKE_PROJEKT:
       var index = state.projekts.findIndex(
         projekt => projekt.projektsId === action.payload.projektsId
-      );
+      ); 
       state.projekts[index] = action.payload;
       if (state.projekts.projektsId === action.payload.projektsId) {
         state.projekts = action.payload;

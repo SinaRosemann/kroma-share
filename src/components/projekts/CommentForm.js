@@ -17,7 +17,10 @@ const styles = (theme) => ({
   ...theme.spreadThis,
   commentForm: {
     textAlign: "center",
-    padding: "50px"
+    padding: "50px",
+    [theme.breakpoints.down("xs")]: {
+      padding: "10px",
+    },
   },
   visibleSeperator: {
     width: "100%",
@@ -57,7 +60,7 @@ class CommentForm extends Component {
     const errors = this.state.errors;
 
     const commentFormMarkup = authenticated ? (
-      <Grid item sm={12} >
+      <Grid item sm={12} xs={12}>
         <form onSubmit={this.handleSubmit} className={classes.commentForm}>
         <Typography
             variant="h5"
@@ -93,7 +96,7 @@ class CommentForm extends Component {
         <hr className={classes.visibleSeperator} />
       </Grid>
     ) : (
-      <Grid item sm={12} >
+      <Grid item sm={12} xs={12} >
         <Typography
             variant="h6"
             color="primary"

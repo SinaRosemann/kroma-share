@@ -71,7 +71,13 @@ export const uploadImage = (formData) => (dispatch) => {
     .then(() => {
       dispatch(getUserData());
     })
-    .catch((err) => console.log(err));
+    /* .catch((err) => console.log(err)); */
+    .catch( (err) => {
+      window.alert("Please choose a format like .jpg or .png for your profile picture")
+    })
+    .then(() => {
+      dispatch(getUserData());
+    })
 };
 
 export const editUserDetails = (userDetails) => (dispatch) => {
@@ -93,6 +99,7 @@ export const markNotificationsRead = (notificationIds) => (dispatch) => {
       });
     })
     .catch((err) => console.log(err));
+
 };
 
 const setAuthorizationHeader = (token) => {
