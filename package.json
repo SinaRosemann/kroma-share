@@ -2,6 +2,7 @@
   "name": "kroma-share",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://SinaRosemann.github.io",
   "dependencies": {
     "@material-ui/core": "^4.9.2",
     "@material-ui/icons": "^4.9.1",
@@ -25,6 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build master"
   },
   "eslintConfig": {
     "extends": "react-app"
