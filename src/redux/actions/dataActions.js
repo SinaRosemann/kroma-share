@@ -103,7 +103,7 @@ export const submitComment = (projektsId, commentData) => dispatch => {
         payload: res.data
       });
       dispatch(clearErrors());
-    })
+    }) 
     .catch(err => {
       dispatch({
         type: SET_ERRORS,
